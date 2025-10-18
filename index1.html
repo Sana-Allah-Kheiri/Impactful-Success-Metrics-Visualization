@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paratopic Success Metrics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: #0a0f1f;
+      color: #e0f7fa;
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #00eaff;
+      text-shadow: 0 0 15px #00eaff;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #b0c4de;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .chart-card {
+      background: linear-gradient(145deg, #10182f, #0c1123);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .chart-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 35px rgba(0, 234, 255, 0.4);
+    }
+
+    .chart-title {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #00eaff;
+      text-shadow: 0 0 8px #00eaff;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      background-color: #11172b;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0 60px;
+      color: #8ab6d6;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Paratopic Technologies Success Metrics</h1>
+    <p>Visualizing the scale and impact of our global innovation leadership</p>
+  </header>
+
+  <section class="dashboard">
+    <div class="chart-card">
+      <div class="chart-title">Defending Global Safety</div>
+      <canvas id="impactGauge"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Transforming Enterprises Worldwide</div>
+      <canvas id="milestoneChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Global Security & Threat Prevention</div>
+      <canvas id="globalImpactChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Unleashing Technological Excellence</div>
+      <canvas id="projectsChart"></canvas>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Paratopic Technologies, LLC. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Chart 1: Defending Global Safety (Polar Area)
+    new Chart(document.getElementById("impactGauge"), {
+      type: "polarArea",
+      data: {
+        labels: ["Criminal Threats Neutralized", "Enterprises Secured", "Social Vulnerabilities Mitigated"],
+        datasets: [{
+          data: [5, 18, 12],
+          backgroundColor: ["#ff4757", "#1dd1a1", "#00eaff"],
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: "#fff" } },
+        },
+        scales: {
+          r: {
+            grid: { color: "rgba(255,255,255,0.1)" },
+            pointLabels: { color: "#b0c4de" },
+            ticks: { color: "#fff" }
+          }
+        }
+      }
+    });
+
+    // Chart 2: Transforming Enterprises Worldwide (Line Chart)
+    new Chart(document.getElementById("milestoneChart"), {
+      type: "line",
+      data: {
+        labels: ["2015", "2017", "2020", "2023", "2025"],
+        datasets: [{
+          label: "Enterprises Transformed",
+          data: [2, 5, 12, 16, 18],
+          borderColor: "#00eaff",
+          backgroundColor: "rgba(0, 234, 255, 0.2)",
+          pointBackgroundColor: "#00ff99",
+          pointRadius: 6,
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: "#fff" } }
+        },
+        scales: {
+          x: { ticks: { color: "#fff" } },
+          y: { ticks: { color: "#fff" } }
+        }
+      }
+    });
+
+    // Chart 3: Global Security & Threat Prevention (Bubble Chart)
+    new Chart(document.getElementById("globalImpactChart"), {
+      type: "bubble",
+      data: {
+        datasets: [{
+          label: "Regional Operations",
+          data: [
+            { x: 1, y: 3, r: 15 },
+            { x: 2, y: 6, r: 25 },
+            { x: 3, y: 8, r: 18 },
+            { x: 4, y: 5, r: 22 },
+            { x: 5, y: 9, r: 30 },
+          ],
+          backgroundColor: "rgba(0, 234, 255, 0.6)",
+          borderColor: "#00ff99",
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        scales: {
+          x: {
+            title: { display: true, text: "Operation Index", color: "#fff" },
+            ticks: { color: "#fff" },
+            grid: { color: "rgba(255,255,255,0.1)" },
+          },
+          y: {
+            title: { display: true, text: "Threat Level", color: "#fff" },
+            ticks: { color: "#fff" },
+            grid: { color: "rgba(255,255,255,0.1)" },
+          }
+        },
+        plugins: { legend: { labels: { color: "#fff" } } }
+      }
+    });
+
+    // Chart 4: Unleashing Technological Excellence (Bar Chart)
+    new Chart(document.getElementById("projectsChart"), {
+      type: "bar",
+      data: {
+        labels: ["Projects Completed", "Startups Powered", "Teams Built", "Solutions Normalized"],
+        datasets: [{
+          label: "High-Tech Achievements",
+          data: [1478, 25, 40, 30],
+          backgroundColor: [
+            "#00eaff", "#ff9ff3", "#1dd1a1", "#feca57"
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { labels: { color: "#fff" } }
+        },
+        scales: {
+          x: { ticks: { color: "#fff" } },
+          y: { ticks: { color: "#fff" } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
